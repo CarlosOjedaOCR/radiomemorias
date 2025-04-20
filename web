@@ -1,0 +1,55 @@
+<source src="https://stream.zeno.fm/40lyal8xs9qvv" type="audio/mpeg">
+      Tu navegador no soporta el reproductor de audio.
+    </audio>
+  </div>  <div class="social-icons">
+    <a href="https://www.facebook.com/share/194AEfk8C9/" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" />
+    </a>
+    <a href="https://wa.me/34603314124" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+    </a>
+    <a href="https://paypal.me/CarlosOjedalocutor?country.x=ES&locale.x=es_ES" target="_blank">
+      <img src="https://i.postimg.cc/ydS8wwZT/png-transparent-paypal-logo-computer-icons-payment-paypal-blue-angle-service-thumbnail-1.png" alt="PayPal" />
+    </a>
+  </div>  <div class="logos" id="logos">
+    <img src="https://i.postimg.cc/WDs1v4rq/LOGO-OCR-CON-FILO-BLANCO.png" alt="OCR" />
+    <img src="https://i.postimg.cc/5HpNNMq7/LOGO-RADIO-NET-CON-FILO-BLANCO.png" alt="Radio Net" />
+    <img src="https://i.postimg.cc/PpRXYz71/LOGO-ANTENA-CALIENTE-PGN.png" alt="Antena Caliente" />
+    <img src="https://i.postimg.cc/dk1QhS5q/LOGO-RADIO-MEMORIAS-CON-FILO-BLANCO.png" alt="Radio Memorias" />
+    <img src="https://i.postimg.cc/tT9BfHfK/file-00000000158462468271bb14cdd97597-conversation-id-680249c9-9608-8011-9b4e-8b5a82d68b39-message-i.png" alt="Carlos Ojeda" />
+  </div>  <div class="scroll-bottom"><div>OCR | Radio Net | Radio Antena Caliente | Radio Memorias</div></div>  <script>
+    const audio = document.getElementById('audio');
+    const vinilo = document.getElementById('vinilo');
+
+    function toggleSpin() {
+      if (audio.paused) {
+        vinilo.classList.remove('gira');
+      } else {
+        vinilo.classList.add('gira');
+      }
+    }
+
+    audio.addEventListener('play', toggleSpin);
+    audio.addEventListener('pause', toggleSpin);
+
+    window.onload = () => {
+      if (!audio.paused) {
+        vinilo.classList.add('gira');
+      }
+
+      const logos = document.querySelectorAll('.logos img');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      logos.forEach(logo => observer.observe(logo));
+    };
+  </script></body>
+</html>
